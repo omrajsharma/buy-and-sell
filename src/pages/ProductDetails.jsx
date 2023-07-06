@@ -33,6 +33,7 @@ function ProductDetails() {
               <img src={product.itemImg} alt="" />
             </div>
             <div className="product-detail-body">
+              <h2> {product.itemTitle} </h2>
               <h1>₹ {product.itemPrice}</h1>
               <h3>{product.itemDesc}</h3>
               <div className='product-detail-body-row'>

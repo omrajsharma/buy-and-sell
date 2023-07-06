@@ -104,12 +104,16 @@ footer {
 .product-detail-body {
     width: 30%;
 }
+.product-detail-body h2 {
+    font-weight: 500;
+}
 .product-detail-body h1 {
     
 }
 .product-detail-body h3 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 .product-detail-body-row {
     display: flex;
