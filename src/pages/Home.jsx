@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   const [products, setProducts] = React.useState([]);
-
-  console.log(products);
+  const [searchProducts, setSearchProducts] = React.useState([]);
 
   React.useEffect(() => {
     fetch('https://buy-and-sell-f5fe8-default-rtdb.asia-southeast1.firebasedatabase.app/item-list.json')
@@ -19,21 +18,46 @@ function Home() {
     })
   }, [])
 
+  const handleSearch = (e) => {
+    setSearchProducts(
+      products.filter(
+        product => product.itemTitle.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    )
+  }
+
   return (
-    <div className='product-list-container'>
-      { 
-        products.length > 0 && 
-        products.map(product => 
-          <ProductCard {...product} />
-          // <ProductCard authorContact={product.authorContact} authorName={product.authorName} />
-        )
-      }
-    </div>
+    <>
+      <div className="product-search-container">
+        <input 
+          type="text"
+          onChange={handleSearch}
+          placeholder='search products...'
+        />
+      </div>
+      <div className='product-list-container'>
+        {/* All the products */}
+        { 
+          products.length > 0 && searchProducts.length == 0 && 
+          products.map(product => 
+            <ProductCard {...product} />
+          )
+        }
+
+        {/* Search products */}
+        {
+          searchProducts.length > 0 && (
+            searchProducts.map(product => 
+              <ProductCard {...product} />
+            )
+          )
+        }
+      </div>
+    </>
   )
 }
 
 function ProductCard({authorContact, authorName, itemDate, itemDesc, itemImg, itemPrice, itemTitle, productId}) {
-  console.log(authorContact)
   return (
     <Link to={'/productdetails/' + productId}>
       <div className='product-card'>
@@ -42,7 +66,7 @@ function ProductCard({authorContact, authorName, itemDate, itemDesc, itemImg, it
         </div>
         <div className="product-body">
           <h2>₹ {itemPrice}</h2>
-          <h4>{itemTitle}</h4>
+          <h4>{itemTitle.length > 25 ? itemTitle.slice(0, 25) + '...' : itemTitle }</h4>
           <p>{itemDate}</p>
         </div>
       </div>

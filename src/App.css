@@ -30,6 +30,19 @@ footer {
     text-align: center;
 }
 
+.product-search-container {
+    max-width: 500px;
+    margin: 20px auto;
+    margin-bottom: 40px;
+}
+.product-search-container input {
+    font-size: 18px;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid  #aeaeae;
+}
 .product-list-container {
     max-width: 1000px;
     margin: 20px auto;
@@ -40,6 +53,7 @@ footer {
 }
 .product-card {
     width: 300px;
+    height: 320px;
     padding: 0px 10px 20px 10px;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
