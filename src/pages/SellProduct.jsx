@@ -65,7 +65,8 @@ function SellProduct() {
                 itemPrice: price.current.value,
                 itemTitle: title.current.value
             }),
-        });
+        })
+        .then(res => alert('Item added for Ad'))
 
         // reset the form
         title.current.value = '';
@@ -74,6 +75,7 @@ function SellProduct() {
         place.current.value = '';
         name.current.value = '';
         contact.current.value = '';
+        img.current.value = '';
     }
 
   return (
