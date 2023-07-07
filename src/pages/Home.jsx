@@ -14,6 +14,7 @@ function Home() {
       for (let dataItem in data) {
         productList.push({...data[dataItem], productId: dataItem})
       }
+      productList.reverse();
       setProducts(productList)
     })
   }, [])
